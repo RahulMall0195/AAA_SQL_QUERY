@@ -1,0 +1,86 @@
+          
+          
+  INTRODUCTION  -     SQL is a standard language for storing, manipulating and retrieving data in databases.
+            
+                      SQL can do ( execute queries ,  retrieve data , insert records , update records , delete records ,  create new databases ,
+                      create new tables , create stored procedures , create views in a database set permissions on tables, procedures, and views )
+            
+           
+                   
+           
+           
+           1.
+                                             SELECT - extracts data from a database
+                                             UPDATE - updates data in a database
+                                             DELETE - deletes data from a database
+                                             INSERT INTO - inserts new data into a database
+                                             CREATE DATABASE - creates a new database
+                                             ALTER DATABASE - modifies a database
+                                             CREATE TABLE - creates a new table
+                                             ALTER TABLE - modifies a table
+                                             DROP TABLE - deletes a table
+                                             CREATE INDEX - creates an index (search key)
+                                             DROP INDEX - deletes an index
+
+                        
+          
+          2. SELECT        -     The SELECT statement is used to select data from a database.             
+          
+                                            SELECT * FROM table_name; 
+                                            SELECT CustomerName, City FROM Customers;
+                                            SELECT DISTINCT Country FROM Customers;
+                                            SELECT COUNT(DISTINCT Country) FROM Customers;
+                                            
+                                            SELECT Count(*) AS DistinctCountries
+                                            FROM (SELECT DISTINCT Country FROM Customers);
+                                            
+           
+          
+          3.WHERE          -     The WHERE clause is used to filter records.     
+                                           
+                                           SELECT * FROM Customers
+                                           WHERE Country='Mexico'; 
+                                           
+                                           SELECT * FROM Customers
+                                           WHERE CustomerID=1; 
+                                           
+              
+              
+          4.SQL AND,       -     The AND operator displays a record if all the conditions separated by AND are TRUE.
+                OR,        -     The OR operator displays a record if any of the conditions separated by OR is TRUE.
+                NOT        -     The NOT operator displays a record if the condition(s) is NOT TRUE.
+                
+                
+                                          SELECT * FROM Customers
+                                          WHERE Country='Germany' AND City='Berlin';
+                                          
+                                          SELECT * FROM Customers
+                                          WHERE City='Berlin' OR City='München';
+                                          
+                                          SELECT * FROM Customers
+                                          WHERE Country='Germany' OR Country='Spain';
+                                          
+                                          SELECT * FROM Customers
+                                          WHERE NOT Country='Germany';
+                                          
+                                          SELECT * FROM Customers
+                                          WHERE Country='Germany' AND (City='Berlin' OR City='München'); 
+                                          
+                                          SELECT * FROM Customers
+                                          WHERE NOT Country='Germany' AND NOT Country='USA'; 
+                                          
+                                          
+                
+                
+                
+                                           
+                                           
+                                           
+                                           
+           
+           
+           
+           
+           
+           
+           
