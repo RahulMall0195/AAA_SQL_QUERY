@@ -10,17 +10,17 @@
            
            
            1.
-                                             SELECT - extracts data from a database
-                                             UPDATE - updates data in a database
-                                             DELETE - deletes data from a database
-                                             INSERT INTO - inserts new data into a database
-                                             CREATE DATABASE - creates a new database
-                                             ALTER DATABASE - modifies a database
-                                             CREATE TABLE - creates a new table
-                                             ALTER TABLE - modifies a table
-                                             DROP TABLE - deletes a table
-                                             CREATE INDEX - creates an index (search key)
-                                             DROP INDEX - deletes an index
+                                             SELECT            - extracts data from a database
+                                             UPDATE            - updates data in a database
+                                             DELETE            - deletes data from a database
+                                             INSERT INTO       - inserts new data into a database
+                                             CREATE DATABASE   - creates a new database
+                                             ALTER DATABASE    - modifies a database
+                                             CREATE TABLE      - creates a new table
+                                             ALTER TABLE       - modifies a table
+                                             DROP TABLE        - deletes a table
+                                             CREATE INDEX      - creates an index (search key)
+                                             DROP INDEX        - deletes an index
 
                         
           
@@ -68,7 +68,9 @@
                                           
                                           SELECT * FROM Customers
                                           WHERE NOT Country='Germany' AND NOT Country='USA'; 
-                                          
+                                     
+                                     
+                                     
                                           
             5.ORDER BY     -    The ORDER BY keyword is used to sort the result-set in ascending or descending order.
             
@@ -83,13 +85,144 @@
                                           
                                           SELECT * FROM Customers
                                           ORDER BY Country ASC, CustomerName DESC; 
-                                          
+                                     
+                                     
+                                     
                 
             6.INSERT INTO  -     The INSERT INTO statement is used to insert new records in a table.
-                                         
-                                         
             
+                                          INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+                                          VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+                                          
+                                          INSERT INTO Customers (CustomerName, City, Country)
+                                          VALUES ('Cardinal', 'Stavanger', 'Norway');
+                                          
+                                          
+                                          
+                
+                
+            7.NULL Value  -     The IS NULL operator is used to test for empty values (NULL values).   
+            
+                                          SELECT CustomerName, ContactName, Address
+                                          FROM Customers
+                                          WHERE Address IS NULL;
+                                          
+                                          SELECT CustomerName, ContactName, Address
+                                          FROM Customers
+                                          WHERE Address IS NOT NULL;
+                                          
+                                  
+                                  
+                                  
+                                          
+            8. UPDATE    -       The UPDATE statement is used to modify the existing records in a table.
+            
+                                          UPDATE Customers
+                                          SET ContactName = 'Alfred Schmidt', City= 'Frankfurt'
+                                          WHERE CustomerID = 1;
+                                          
+                                          UPDATE Customers
+                                          SET ContactName='Juan'
+                                          WHERE Country='Mexico';
+                                          
+                                  
+                                 Be careful when updating records. If you omit the WHERE clause, ALL records will be updated!
+                                 
+                                          UPDATE Customers
+                                          SET ContactName='Juan';
+                                          
+                                          
+                                          
+                                          
+             
+            9.DELETE     -       The DELETE statement is used to delete existing records in a table.
+                                    
+                                          DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+                                          DELETE FROM table_name;
+                                          
+                                          
+                                          
+                                          
+                                          
+            10.SELECT TOP -      The SELECT TOP clause is used to specify the number of records to return.    
+            
+            
+                                         SELECT TOP number|percent column_name(s)
+                                         FROM table_name
+                                         WHERE condition; 
+                                         
+                                         SELECT TOP 3 * FROM Customers;
+                                        
+                                         SELECT * FROM Customers
+                                         LIMIT 3; 
+                                        
+                                         SELECT * FROM Customers                                          for Oracle:
+                                         FETCH FIRST 3 ROWS ONLY; 
+                                         
+                                         SELECT TOP 50 PERCENT * FROM Customers;
+                                         
+                                         SELECT * FROM Customers
+                                         FETCH FIRST 50 PERCENT ROWS ONLY;
+                                         
+                                         SELECT TOP 3 * FROM Customers
+                                         WHERE Country='Germany';
+                                         
+                                         SELECT * FROM Customers                                          for MySQL:
+                                         WHERE Country='Germany'
+                                         LIMIT 3; 
+                                         
+                                         SELECT * FROM Customers                                          for Oracle:
+                                         WHERE Country='Germany'
+                                         FETCH FIRST 3 ROWS ONLY;
+                                        
+                                        
+                                        
+                                        
+                                        
+            11.MIN() and MAX()   -       The MIN() function returns the smallest value of the selected column.
+                                         The MAX() function returns the largest value of the selected column.     
+                                         
+                                         SELECT MIN(column_name)
+                                         FROM table_name
+                                         WHERE condition; 
+                                         
+                                         SELECT MAX(column_name)
+                                         FROM table_name
+                                         WHERE condition; 
+                                         
+                                         SELECT MIN(Price) AS SmallestPrice
+                                         FROM Products;
+                                         
+                                         SELECT MAX(Price) AS LargestPrice
+                                         FROM Products; 
+                                         
+                                         
+                                         
+                                         
+         12.COUNT(), AVG() and SUM() -  The COUNT() function returns the number of rows that matches a specified criterion. 
+                                        The AVG() function returns the average value of a numeric column. 
+                                        The SUM() function returns the total sum of a numeric column. 
+         
+                                        SELECT COUNT(column_name)
+                                        FROM table_name
+                                        WHERE condition; 
+                                        
+                                        SELECT AVG(column_name)
+                                        FROM table_name
+                                        WHERE condition; 
+                                        
+                                        SELECT SUM(column_name)
+                                        FROM table_name
+                                        WHERE condition; 
                                        
+                                       SELECT COUNT(ProductID)
+                                       FROM Products;
+                                       
+                                       SELECT AVG(Price)
+                                       FROM Products;
+                                       
+                                       SELECT SUM(Quantity)
+                                       FROM OrderDetails; 
                 
                                            
                                            
