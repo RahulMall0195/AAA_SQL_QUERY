@@ -1,5 +1,8 @@
           
-          
+
+-----------------------------------------------------------------BASIC_SYNTAX_1--------------------------------------------------------------------Rahul Mall--------
+
+
   INTRODUCTION  -     SQL is a standard language for storing, manipulating and retrieving data in databases.
             
                       SQL can do ( execute queries ,  retrieve data , insert records , update records , delete records ,  create new databases ,
@@ -223,15 +226,175 @@
                                        
                                        SELECT SUM(Quantity)
                                        FROM OrderDetails; 
-                
-                                           
-                                           
-                                           
-                                           
-           
-           
-           
-           
-           
-           
-           
+                                       
+                                       
+                                       
+                                       
+           13.LIKE           -         The LIKE operator is used in a WHERE clause to search for a specified pattern in a column. 
+                                       
+                                       SELECT column1, column2, ...
+                                       FROM table_name
+                                       WHERE columnN LIKE pattern; 
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE CustomerName LIKE 'a%';
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE CustomerName LIKE '%a'; 
+                                       
+                                       The following SQL statement selects all customers with a CustomerName that have "or" in any position:
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE CustomerName LIKE '%or%';
+                                       
+                                       The following SQL statement selects all customers with a CustomerName that have "r" in the second position:
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE CustomerName LIKE '_r%';
+                                       
+                                       The following SQL statement selects all customers with a CustomerName that starts with "a" and are at least 3 characters in length:
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE CustomerName LIKE 'a__%'; 
+                                       
+                                       The following SQL statement selects all customers with a ContactName that starts with "a" and ends with "o":
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE ContactName LIKE 'a%o'; 
+                                       
+                                       The following SQL statement selects all customers with a CustomerName that does NOT start with "a":
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE CustomerName NOT LIKE 'a%';
+                                       
+                                                                         
+           14.Wildcard         -       A wildcard character is used to substitute one or more characters in a string.         
+                                       Here are some examples showing different LIKE operators with '%' and '_' wildcards:
+                                       
+                                       
+                                       WHERE CustomerName LIKE 'a%' 	          Finds any values that starts with "a"
+                                       WHERE CustomerName LIKE '%a' 	          Finds any values that ends with "a"
+                                       WHERE CustomerName LIKE '%or%' 	Finds any values that have "or" in any position
+                                       WHERE CustomerName LIKE '_r%' 	          Finds any values that have "r" in the second position
+                                       WHERE CustomerName LIKE 'a__%' 	Finds any values that starts with "a" and are at least 3 characters in length
+                                       WHERE ContactName LIKE 'a%o' 	          Finds any values that starts with "a" and ends with "o"
+                                       
+                                       
+                                       Using the % Wildcard-----------------------------------------------
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE City LIKE 'ber%'; 
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE City LIKE '%es%';
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE City LIKE '_ondon';
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE City LIKE 'L_n_on';
+                                    
+                                       --------------------------------------------------------------------
+                                       
+                                       Using the [charlist] Wildcard---------------------------------------
+                                       
+                                       The following SQL statement selects all customers with a City starting with "b", "s", or "p":
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE City LIKE '[bsp]%';
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE City LIKE '[!bsp]%'; 
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE City NOT LIKE '[bsp]%'; 
+                                       
+                                       
+                                       
+            15.IN            -         The IN operator allows you to specify multiple values in a WHERE clause.    
+                                       The IN operator is a shorthand for multiple OR conditions.
+                                       
+                                       SELECT column_name(s)
+                                       FROM table_name
+                                       WHERE column_name IN (value1, value2, ...); 
+                                       
+                                       SELECT column_name(s)
+                                       FROM table_name
+                                       WHERE column_name IN (SELECT STATEMENT); 
+                                       
+                                       The following SQL statement selects all customers that are located in "Germany", "France" or "UK":
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE Country IN ('Germany', 'France', 'UK');
+                                       
+                                       The following SQL statement selects all customers that are NOT located in "Germany", "France" or "UK":
+                                      
+                                       SELECT * FROM Customers
+                                       WHERE Country NOT IN ('Germany', 'France', 'UK');
+                                       
+                                       The following SQL statement selects all customers that are from the same countries as the suppliers:
+                                       
+                                       SELECT * FROM Customers
+                                       WHERE Country IN (SELECT Country FROM Suppliers);
+                                       
+                                       
+                                       
+              16.BETWEEN    -          The BETWEEN operator selects values within a given range. The values can be numbers, text, or dates. 
+                                       The BETWEEN operator is inclusive: begin and end values are included. 
+                                       
+                                       
+                                       SELECT column_name(s)
+                                       FROM table_name
+                                       WHERE column_name BETWEEN value1 AND value2; 
+                                       
+                                       SELECT * FROM Products
+                                       WHERE Price BETWEEN 10 AND 20;
+                                       
+                                       To display the products outside the range of the previous example, use NOT BETWEEN:
+                                       
+                                       SELECT * FROM Products
+                                       WHERE Price NOT BETWEEN 10 AND 20;
+                                       
+                                       The following SQL statement selects all products with a price between 10 and 20. In addition; do not show products with a CategoryID of 1,2, or 3:
+                                       
+                                       SELECT * FROM Products
+                                       WHERE Price BETWEEN 10 AND 20
+                                       AND CategoryID NOT IN (1,2,3);
+                                       
+                                       The following SQL statement selects all products with a ProductName between Carnarvon Tigers and Mozzarella di Giovanni:
+                                       
+                                       SELECT * FROM Products
+                                       WHERE ProductName BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+                                       ORDER BY ProductName;
+                                       
+                                       SELECT * FROM Products
+                                       WHERE ProductName BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+                                       ORDER BY ProductName;
+                                       
+                                       The following SQL statement selects all products with a ProductName between Carnarvon Tigers and Chef Anton's Cajun Seasoning:
+                                       
+                                       SELECT * FROM Products
+                                       WHERE ProductName BETWEEN "Carnarvon Tigers" AND "Chef Anton's Cajun Seasoning"
+                                       ORDER BY ProductName;
+                                       
+                                       The following SQL statement selects all products with a ProductName not between Carnarvon Tigers and Mozzarella di Giovanni:
+                                       
+                                       SELECT * FROM Products
+                                       WHERE ProductName NOT BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+                                       ORDER BY ProductName;
+                                       
+                                       The following SQL statement selects all orders with an OrderDate between '01-July-1996' and '31-July-1996':
+                                       
+                                       SELECT * FROM Orders
+                                       WHERE OrderDate BETWEEN #07/01/1996# AND #07/31/1996#;
+                                       
+                                       SELECT * FROM Orders
+                                       WHERE OrderDate BETWEEN '1996-07-01' AND '1996-07-31';
+                                       
+                                                      
+  -----------------------------------------------------------------Please Visit BASIC_SYNTAX_2----------------------------------------------------------Rahul Mall---------                        
+            
+
+
+
+
